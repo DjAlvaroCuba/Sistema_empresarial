@@ -1,4 +1,5 @@
 ﻿using Business;
+using Entity;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,11 +23,29 @@ namespace Semana3
             InitializeComponent();
         }
 
-        private void btnProducts_Click(object sender, RoutedEventArgs e)
+
+        private void ListarBtn_Click(object sender, RoutedEventArgs e)
         {
-            Bproduct business = new Bproduct();
-            var products = business.Get();
-            dgProducts.ItemsSource = products;
+            try
+            {
+    
+                Bproduct business = new Bproduct();
+           
+                List<Product> productos = business.Get();
+
+              
+                dgvClientes.ItemsSource = productos;
+            }
+            catch (Exception ex)
+            {
+                // Mostrar un mensaje en caso de error
+                MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
