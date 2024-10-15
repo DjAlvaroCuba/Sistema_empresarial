@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Business;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,13 @@ namespace Semana3
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            Bproduct business = new Bproduct();
+            var products = business.Get();
+            dgProducts.ItemsSource = products;
         }
     }
 }
